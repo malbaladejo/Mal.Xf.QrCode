@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mal.Xf.QrCode.Views.Scan.ScanPage"
+             xmlns:zXing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
+    <ContentPage.Content>
+        <Grid>
+            <zXing:ZXingScannerView x:Name="zxing"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    AutomationId="zxingScannerView"
+                                    OnScanResult="OnScanResult"/>
+            <zXing:ZXingDefaultOverlay x:Name="overlay"
+                                       AutomationId = "zxingDefaultOverlay"
+                                       FlashButtonClicked="OnFlashButtonClicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

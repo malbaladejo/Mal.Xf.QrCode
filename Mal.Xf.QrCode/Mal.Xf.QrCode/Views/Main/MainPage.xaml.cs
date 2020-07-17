@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Mal.Xf.QrCode.Models;
+using Mal.Xf.QrCode.Views.Scan;
+using Mal.Xf.QrCode.Views.ScanDetail;
 
 namespace Mal.Xf.QrCode.Views
 {
@@ -14,29 +16,23 @@ namespace Mal.Xf.QrCode.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        private readonly IHomePageFactory homePageFactory = new HomePageFactory();
+
+        private readonly Dictionary<MenuItemType, NavigationPage> MenuPages = new Dictionary<MenuItemType, NavigationPage>();
+
         public MainPage()
         {
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
-
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            this.Master = new MenuPage(this, new MenuItemsProvider());
         }
 
-        public async Task NavigateFromMenu(int id)
+        public async Task NavigateFromMenu(MenuItemType id)
         {
             if (!MenuPages.ContainsKey(id))
             {
-                switch (id)
-                {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                }
+                MenuPages.Add(id, this.homePageFactory.CreatePage(id));
             }
 
             var newPage = MenuPages[id];

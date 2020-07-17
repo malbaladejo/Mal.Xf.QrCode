@@ -7,20 +7,14 @@
             xmlns:views="clr-namespace:Mal.Xf.QrCode.Views"
             x:Class="Mal.Xf.QrCode.Views.MainPage">
 
-    <MasterDetailPage.Master>
-        <views:MenuPage />
-    </MasterDetailPage.Master>
-
-    <MasterDetailPage.Detail>
+        <MasterDetailPage.Detail>
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ItemsPage />
-            </x:Arguments>
+            
         </NavigationPage>
     </MasterDetailPage.Detail>
     
