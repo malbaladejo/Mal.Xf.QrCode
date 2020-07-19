@@ -6,6 +6,10 @@ namespace Mal.Xf.QrCode.Views
 {
     internal class MenuItemsProvider : IMenuItemsProvider
     {
+        public MenuItemsProvider()
+        {
+        }
+
         public IReadOnlyCollection<HomeMenuItem> GetMenuItems()
         => new[]
         {

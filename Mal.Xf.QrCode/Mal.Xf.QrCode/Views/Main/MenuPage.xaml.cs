@@ -30,7 +30,7 @@ namespace Mal.Xf.QrCode.Views
                 if (e.SelectedItem == null)
                     return;
 
-                var id = (int)((HomeMenuItem)e.SelectedItem).Id;
+                var id = ((HomeMenuItem)e.SelectedItem).Id;
                 await this.mainPage.NavigateFromMenu(id);
             };
 

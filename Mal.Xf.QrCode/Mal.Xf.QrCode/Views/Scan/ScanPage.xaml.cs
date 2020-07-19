@@ -25,9 +25,6 @@ namespace Mal.Xf.QrCode.Views.Scan
                 BarcodeFormat.EAN_13
             };
             this.scanDetailPageFactory = scanDetailPageFactory;
-            //overlay.ShowFlashButton = zxing.HasTorch;
-
-            //overlay.FlashButtonClicked += (sender, e) =>
         }
 
         public void OnScanResult(Result result)
